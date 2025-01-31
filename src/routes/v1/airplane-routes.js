@@ -9,6 +9,7 @@ router.post('/', airplaneController.createAirplane);
 router.get('/',airplaneController.getAirplanes);
 router.get('/:id',airplaneController.getAirplane);
 router.delete('/:id',airplaneController.destroyAirplane);
+router.put('/:id',airplaneController.updateAirplane);
 
 
 

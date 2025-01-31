@@ -23,7 +23,7 @@ class crudRepository{
 }
 
 async get(data){
-    const response= this.model.findByPk(data);
+    const response=  await this.model.findByPk(data);
     if(!response){
         throw new AppError('not able to find the resource',statusCodes.NOT_FOUND);
     }
@@ -34,15 +34,17 @@ async getAll(){
     return response;
 }
 
-async update(id,data){
-     const response= await this.model.update(data,{
-        where:{
-            id:id
-        }
+async update(id, data) {
+    const response = await this.model.update(data, {
+        where: { id: id },
+        returning: true // Ensure Sequelize returns the updated object
+    });
+
+    if (response[0] === 0) { 
+        throw new AppError('Not able to find the resource', statusCodes.NOT_FOUND);
     }
-     );
+}
 }
 
 
-}
 module.exports=crudRepository;
