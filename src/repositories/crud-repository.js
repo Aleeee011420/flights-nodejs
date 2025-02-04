@@ -40,9 +40,7 @@ async update(id, data) {
         returning: true // Ensure Sequelize returns the updated object
     });
 
-    if (response[0] === 0) { 
-        throw new AppError('Not able to find the resource', statusCodes.NOT_FOUND);
-    }
+   
 }
 }
 
