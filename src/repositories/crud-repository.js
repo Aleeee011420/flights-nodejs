@@ -37,7 +37,7 @@ async getAll(){
 async update(id, data) {
     const response = await this.model.update(data, {
         where: { id: id },
-        returning: true // Ensure Sequelize returns the updated object
+        returning: true 
     });
 
    
