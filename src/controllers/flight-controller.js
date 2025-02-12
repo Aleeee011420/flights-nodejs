@@ -44,6 +44,7 @@ async function getAllFlights(req,res){
 
         })
     }catch(error){
+        console.log(error);
         return res.status(error.statusCode).json({
             succuss:false,
             error:{error},
